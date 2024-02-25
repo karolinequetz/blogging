@@ -1,0 +1,31 @@
+$title-header: #03a9f4;
+
+.app-header {
+  display: flex;
+  flex-direction: column;
+  background-color: $title-header;
+  position: relative;
+  overflow: hidden;
+
+  img {
+    width: auto;
+    object-fit: cover;
+  }
+}
+
+.title-header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  width: 803px;
+  height: 70px;
+  margin-left: 558px;
+  position: relative;
+
+  p {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: white;
+  }
+}
