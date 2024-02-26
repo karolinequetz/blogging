@@ -1,0 +1,20 @@
+<section class="post-section">
+  @if (post) {
+  <h1>{{ post.title }}</h1>
+  <p class="subtitle">{{ post.subtitle }}</p>
+  <div class="container-author">
+    <img
+      ngSrc="./assets/avatar{{ post.author.id }}.jpg"
+      width="50"
+      height="50"
+    />
+    <div class="author">
+      <p class="name">{{ post.author.username }}</p>
+      <p class="date">{{ post.timestamp | date : "dd 'de' MMM, y" }}</p>
+    </div>
+  </div>
+  <div class="content" [innerHtml]="post.content"></div>
+  }@else {
+  <p>Nenhum post encontrado.</p>
+  }
+</section>
