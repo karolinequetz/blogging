@@ -1,0 +1,52 @@
+$primary: #03a9f4;
+$light-primary: #00d4ff;
+$secondary: #ff9b52;
+$light-secondary: #ffbf8f;
+$basic: #d7d7d7;
+.btn {
+  border: none;
+  border-radius: 30px;
+
+  cursor: pointer;
+  padding: 12px 16px;
+  &:disabled {
+    opacity: 0.6;
+  }
+
+  &.primary {
+    color: white;
+    background: -webkit-linear-gradient(180deg, $primary, $light-primary);
+
+    font-size: 1rem;
+    font-weight: bold;
+  }
+
+  &.secondary {
+    background: -webkit-linear-gradient(180deg, $secondary, $light-secondary);
+    color: white;
+
+    font-size: 1rem;
+    font-weight: bold;
+  }
+
+  &.basic {
+    background: $basic;
+    color: black;
+
+    font-size: 1rem;
+    font-weight: bold;
+  }
+}
+
+@media (min-width: 768px) {
+  .btn {
+    padding: 12px 16px;
+
+    .primary {
+      font-size: 1rem;
+    }
+    .secondary {
+      font-size: 1rem;
+    }
+  }
+}
