@@ -10,10 +10,11 @@
     />
     <div class="author">
       <p class="name">{{ post.author.username }}</p>
-      <p class="date">{{ post.timestamp | date : "dd 'de' MMM, y" }}</p>
+      <p class="date">{{ post.timestamp }}</p>
     </div>
   </div>
   <div class="content" [innerHtml]="post.content"></div>
+  <app-comment [comments]="post.comments"></app-comment>
   }@else {
   <p>Nenhum post encontrado.</p>
   }

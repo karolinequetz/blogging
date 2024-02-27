@@ -1,11 +1,11 @@
 export interface Post {
   id: number;
-  timestamp: Date;
+  timestamp: string;
   author: Author;
   title: string;
   subtitle: string;
   content: string;
-  comments: Comments[];
+  comments: Comment[];
 }
 
 interface Author {
@@ -13,10 +13,18 @@ interface Author {
   username: string;
 }
 
-interface Comments {
+export interface Comment {
   id: number;
-  respondsTo?: string;
+  respondsTo?: { id: number } | null;
   author: Author;
-  timestamp: Date;
+  timestamp: string;
+  content: string;
+}
+
+export interface ShowedComment {
+  id: number;
+  replies: ShowedComment[];
+  author: Author;
+  timestamp: string;
   content: string;
 }
