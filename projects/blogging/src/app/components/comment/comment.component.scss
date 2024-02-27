@@ -1,0 +1,37 @@
+$link: #017db5;
+$border: #ff9b52;
+
+.comments-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  h3 {
+    font-size: 1.875rem;
+    font-weight: bold;
+    -webkit-text-stroke: 1px black;
+    text-shadow: 0px 2px 5px black;
+  }
+}
+.comment {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border-left: 3px solid $border;
+  gap: 2rem;
+  padding-left: 2rem;
+  .button-link {
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    color: $link;
+  }
+
+  p {
+    color: black;
+    font-size: 1.125rem;
+    line-height: 2;
+  }
+}
