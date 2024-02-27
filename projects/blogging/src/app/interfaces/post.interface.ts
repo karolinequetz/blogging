@@ -7,10 +7,13 @@ export interface Post {
   title: string;
   subtitle: string;
   content: string;
-  comments: Comment[];
 }
 
 export interface Author {
   id: string;
   username: string;
+}
+
+export interface PostWithComments extends Post {
+  comments: Comment[];
 }
