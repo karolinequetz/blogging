@@ -13,8 +13,31 @@
       </button>
       <p>{{ comment.content }}</p>
 
-      <app-button btn-text="Responder"></app-button>
-      @if(comment.replies && comment.replies.length > 0) { @for( reply of
+      <app-button
+        btn-text="Responder"
+        (submit)="toggleReplying(comment.id)"
+      ></app-button>
+
+      @if(replyCommentId === comment.id){
+      <section class="reply">
+        <textarea
+          [(ngModel)]="newCommentContent"
+          placeholder="Digite sua resposta ..."
+        ></textarea>
+
+        <div>
+          <app-button btn-text="Enviar" (click)="onSubmit(comment)">
+          </app-button>
+          <app-button
+            btn-text="Cancelar"
+            [variant]="'secondary'"
+            (click)="onCancel()"
+          >
+          </app-button>
+        </div>
+      </section>
+
+      } @if(comment.replies && comment.replies.length > 0) { @for( reply of
       comment.replies; track reply.id){
       <ng-container
         *ngTemplateOutlet="commentTemplate; context: { $implicit: reply }"
