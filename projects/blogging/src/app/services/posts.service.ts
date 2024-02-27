@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment.development';
-import { Post } from '../interfaces/post.interface';
+import { PostWithComments } from '../interfaces/post.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -12,10 +12,12 @@ export class PostsService {
   constructor(private http: HttpClient) {}
 
   getPosts() {
-    return this.http.get<Post>(`${this.url}/posts`);
+    return this.http.get<PostWithComments>(`${this.url}/posts`);
   }
 
   getPostByIdFetchComments(id: string) {
-    return this.http.get<Post>(`${this.url}/posts/${id}?_embed=comments`);
+    return this.http.get<PostWithComments>(
+      `${this.url}/posts/${id}?_embed=comments`
+    );
   }
 }

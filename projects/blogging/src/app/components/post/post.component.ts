@@ -4,7 +4,7 @@ import {
   NgOptimizedImage,
   registerLocaleData,
 } from '@angular/common';
-import { Post } from '../../interfaces/post.interface';
+import { PostWithComments } from '../../interfaces/post.interface';
 import localeBr from '@angular/common/locales/pt';
 import { PostsService } from './../../services/posts.service';
 import { Component, LOCALE_ID } from '@angular/core';
@@ -26,7 +26,7 @@ const USER_ID = '1';
 export class PostComponent {
   private subscription: Subscription = new Subscription();
 
-  public post?: Post;
+  public post?: PostWithComments;
 
   constructor(
     private postsService: PostsService,
