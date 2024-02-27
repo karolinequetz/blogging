@@ -34,4 +34,22 @@ $border: #ff9b52;
     font-size: 1.125rem;
     line-height: 2;
   }
+
+  .reply {
+    textarea {
+      padding: 1rem;
+      font-size: 1rem;
+      width: 500px;
+      height: 80px;
+      margin-bottom: 8px;
+      margin-top: 8px;
+      border: 1px solid $link;
+      border-radius: 5px;
+    }
+
+    div {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
 }

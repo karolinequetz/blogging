@@ -1,5 +1,7 @@
+import { Comment } from './comment.interface';
+
 export interface Post {
-  id: number;
+  id: string;
   timestamp: string;
   author: Author;
   title: string;
@@ -8,23 +10,7 @@ export interface Post {
   comments: Comment[];
 }
 
-interface Author {
-  id: number;
+export interface Author {
+  id: string;
   username: string;
-}
-
-export interface Comment {
-  id: number;
-  respondsTo?: { id: number } | null;
-  author: Author;
-  timestamp: string;
-  content: string;
-}
-
-export interface ShowedComment {
-  id: number;
-  replies: ShowedComment[];
-  author: Author;
-  timestamp: string;
-  content: string;
 }

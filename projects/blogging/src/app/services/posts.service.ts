@@ -14,4 +14,8 @@ export class PostsService {
   getPosts() {
     return this.http.get<Post>(`${this.url}/posts`);
   }
+
+  getPostByIdFetchComments(id: string) {
+    return this.http.get<Post>(`${this.url}/posts/${id}?_embed=comments`);
+  }
 }

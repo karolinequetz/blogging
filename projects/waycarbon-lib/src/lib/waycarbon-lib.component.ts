@@ -4,13 +4,7 @@ import { Component } from '@angular/core';
   selector: 'lib-waycarbon-lib',
   standalone: true,
   imports: [],
-  template: `
-    <p>
-      waycarbon-lib works!
-    </p>
-  `,
-  styles: ``
+  template: ``,
+  styles: ``,
 })
-export class WaycarbonLibComponent {
-
-}
+export class WaycarbonLibComponent {}

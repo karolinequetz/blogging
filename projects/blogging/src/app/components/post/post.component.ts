@@ -4,13 +4,17 @@ import {
   NgOptimizedImage,
   registerLocaleData,
 } from '@angular/common';
-import { Comment, Post } from '../../interfaces/post.interface';
+import { Post } from '../../interfaces/post.interface';
 import localeBr from '@angular/common/locales/pt';
 import { PostsService } from './../../services/posts.service';
 import { Component, LOCALE_ID } from '@angular/core';
 import { CommentComponent } from '../comment/comment.component';
+import { Comment } from '../../interfaces/comment.interface';
+import { CommentsService } from '../../services/comments.service';
+import { Subscription } from 'rxjs';
 registerLocaleData(localeBr, 'pt');
 
+const USER_ID = '1';
 @Component({
   selector: 'app-post',
   standalone: true,
@@ -20,14 +24,29 @@ registerLocaleData(localeBr, 'pt');
   imports: [NgOptimizedImage, CommonModule, CommentComponent],
 })
 export class PostComponent {
+  private subscription: Subscription = new Subscription();
+
   public post?: Post;
 
-  constructor(private postsService: PostsService) {
+  constructor(
+    private postsService: PostsService,
+    private commentsService: CommentsService
+  ) {
     this.getPost();
   }
 
+  ngOnInit(): void {
+    this.subscription = this.commentsService
+      .getCommentAddedObservable()
+      .subscribe(() => {
+        this.getPost();
+      });
+  }
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
   private getPost() {
-    this.postsService.getPosts().subscribe((posts) => {
+    this.postsService.getPostByIdFetchComments(USER_ID).subscribe((posts) => {
       if (posts.timestamp && !isNaN(new Date(posts.timestamp).getTime())) {
         const datePipe = new DatePipe('pt');
         const formattedDate = datePipe.transform(
