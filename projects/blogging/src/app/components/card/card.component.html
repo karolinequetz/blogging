@@ -1,0 +1,36 @@
+<section class="modal-section">
+  <div class="close">
+    <app-button btn-text="Fechar" [variant]="'basic'"> </app-button>
+  </div>
+
+  <div class="modal-content">
+    <h2>{{ user?.username }}</h2>
+    <div class="image">
+      <img ngSrc="./assets/avatar{{ user?.id }}.jpg" width="150" height="150" />
+    </div>
+    <p class="date">Filiado desde: {{ user?.memberSince | date }}</p>
+    <app-button btn-text="Enviar mensagem"> </app-button>
+
+    <div class="post">
+      <h3>Seus posts</h3>
+
+      @for(post of user?.posts; track user?.id ){
+      <div class="post-content">
+        <p class="title">{{ post.title }}</p>
+        <p class="subtitle">{{ post.subtitle }}</p>
+        <p
+          class="content"
+          [innerHTML]="(post.content | slice : 0 : 100) + '...'"
+        ></p>
+      </div>
+      }
+    </div>
+
+    <div class="footer-buttons">
+      <app-button btn-text="Adicionar"> </app-button>
+      <app-button btn-text="Remover" variant="secondary"> </app-button>
+
+      <app-button btn-text="Reportar" variant="basic"> </app-button>
+    </div>
+  </div>
+</section>
