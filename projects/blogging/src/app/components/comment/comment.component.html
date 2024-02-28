@@ -8,7 +8,10 @@
 
   <ng-template #commentTemplate let-comment>
     <section class="comment">
-      <button class="button-link">
+      <button
+        class="button-link"
+        (click)="getUserById(comment.author.id); modal.toggle()"
+      >
         {{ comment.author.username }} - {{ comment.timestamp }}
       </button>
       <p>{{ comment.content }}</p>
@@ -48,4 +51,7 @@
   } @empty {
   <p>Nenhum comentário para ser exibido.</p>
   }
+  <app-modal #modal>
+    <app-card [user]="user"></app-card>
+  </app-modal>
 </section>
